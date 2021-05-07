@@ -84,7 +84,7 @@ namespace Nix_Project
         }
         public void CheckIn(Lodger lodger, Room room, DateTime arrivalDate, DateTime departureDate)
         {
-            Reservation reservations = Reservations.Where(r => r.Renter == lodger && r.HotelRoom == room && r.ArrivalDate == arrivalDate && r.DepartureDate == departureDate).FirstOrDefault();
+            Reservation reservations = Reservations.Where(r => r.Renter.Equals(lodger) && r.HotelRoom.Equals(room) && r.ArrivalDate == arrivalDate && r.DepartureDate == departureDate).FirstOrDefault();
             if (reservations != null)
             {
                 reservations.RenterCheckIn();
@@ -96,7 +96,7 @@ namespace Nix_Project
         }
         public void CheckOut(Lodger lodger, Room room, DateTime arrivalDate, DateTime departureDate)
         {
-            Reservation reservations = Reservations.Where(r => r.Renter == lodger && r.HotelRoom == room && r.ArrivalDate == arrivalDate && r.DepartureDate == departureDate).FirstOrDefault();
+            Reservation reservations = Reservations.Where(r => r.Renter.Equals(lodger)  && r.HotelRoom.Equals(room) && r.ArrivalDate == arrivalDate && r.DepartureDate == departureDate).FirstOrDefault();
             if (reservations != null)
             {
                 reservations.RenterCheckOut();

@@ -20,5 +20,18 @@ namespace Nix_Project
         public DateTime DateOfBirth { get; private set; }
 
         public string Address { get; private set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Lodger lodger = (Lodger)obj;
+                return (FullName == lodger.FullName) && (DateOfBirth == lodger.DateOfBirth) && (Address == lodger.Address);
+            }
+        }
     }
 }
